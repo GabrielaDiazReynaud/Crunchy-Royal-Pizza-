@@ -1,0 +1,90 @@
+/* You can add global styles to this file, and also import other style files */
+
+.center{
+   margin-left: 100px;
+  
+}
+.bc {
+   background-color: rgb(44, 48, 70);
+   color: rgb(255, 255, 255);
+}
+.fontl{
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: large;
+   margin-left: 60px;
+  
+}
+.fontm1{
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: xx-large;
+  
+}
+.fontm2{
+   font-family: Arial, Helvetica, sans-serif;
+   font-size: larger;
+}
+
+.underline:hover {
+   text-decoration: underline;
+   text-decoration-color: rgb(0, 0, 0);
+   cursor:url(/assets/images/cursor.png),auto;
+ }
+ .buttonbck{
+    background-color: rgb(164, 246, 168)
+ }
+ .buttonbck2{
+   background-color: rgb(204, 204, 204)
+}
+.buttonbck3{
+   background-color: rgb(255, 168, 168)
+}
+.iconbck{
+   background-color: rgb(255, 255, 255)
+}
+
+.toolbar-spacer {
+   flex: 1 1 auto;
+}
+
+
+.example-container {
+   width: auto;
+   display: contents !important;
+ }
+ .example-sidenav {
+   padding: 20px;
+   height: max-content;
+ }
+
+ .margins{
+    padding:30px;
+ }
+ .separationmargin{
+    margin-top: 100px;
+   padding: 30px;
+ }
+
+ .rows{
+    margin-top: 100px;
+   
+ }
+ .rows2{
+   margin-top: 50px;
+  margin-left: 100px;
+}
+ .highlightimage:hover{
+   transform: scale(1.2) !important;
+   cursor:url(/assets/images/cursor.png),auto !important;
+ }
+
+ div.scroll {
+   background-color: #ffffff;
+   width: 600px;
+   height: 150px;
+   overflow-x: hidden;
+   overflow-y: auto;
+   text-align: left;
+   padding: 20px;
+   width: 1109px;
+   margin-left: 1px;
+ }

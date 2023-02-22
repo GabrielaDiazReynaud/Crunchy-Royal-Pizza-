@@ -1,0 +1,70 @@
+<img src="/assets/images/menu.png" width="100%" >
+
+<mat-tab-group [selectedIndex]="index">
+    <mat-tab label="Pizzas">
+      <div style="margin-top: 50px;" class="row">
+        <div *ngFor="let pizza1 of pizzaArray" class="col-md-4">
+          <span class="fontm1">{{pizza1.name}}</span>
+          <br>
+          <a  (click)="service.setTipo('Pizza',pizza1.id)">Detalle</a>
+          <br>
+          <img src={{pizza1.imageUrl}} width="405px" height="335px"/>
+          <br>
+          <span class="fontm2"><strong>Precio:</strong>L. {{pizza1.price}}</span>
+          <br>
+          <br>
+
+          <span class="fontm2"><strong>Descripcion</strong>{{pizza1.description}}</span>
+          <br>
+          <botonescomprar [product]="pizza1"></botonescomprar>
+          <button *ngIf="authService.isAdmin()" mat-button class="buttonbck2"(click)="menu.setEditar('Pizza',pizza1.id)" ><mat-icon [ngStyle]="{'color':'white'}">create</mat-icon></button>
+            <button (click)="deleteProduct(pizza1.id,'https://localhost:44320/api/Pizzas')" *ngIf="authService.isAdmin()" mat-button class="buttonbck3" ><mat-icon [ngStyle]="{'color':'white'}">delete</mat-icon></button>
+        </div>
+    </div>       
+    
+    </mat-tab>
+    <mat-tab label="Sides">
+      <div style="margin-top: 50px;" class="row">
+        <div *ngFor="let sides1 of sidesArray" class="col-md-4">
+          <span class="fontm1">{{sides1.name}}</span>
+          <br>
+          <a  (click)="service.setTipo('Side',sides1.id)">Detalle</a>
+          <br>
+          <img src={{sides1.imageUrl}} width="405px" height="335px"/>
+          <br>
+          <span class="fontm2"><strong>Precio:</strong>L. {{sides1.price}}</span>
+          <br>
+          <br>
+          <span class="fontm2"><strong>Descripcion</strong>{{sides1.description}}</span>
+          <br>
+          <botonescomprar [product]="sides1"></botonescomprar>
+          <button *ngIf="authService.isAdmin()" mat-button class="buttonbck2" (click)="menu.setEditar('Side',sides1.id)"><mat-icon [ngStyle]="{'color':'white'}">create</mat-icon></button>
+          <button (click)="deleteProduct(sides1.id,'https://localhost:44320/api/Sides')" *ngIf="authService.isAdmin()" mat-button class="buttonbck3" ><mat-icon [ngStyle]="{'color':'white'}">delete</mat-icon></button>
+          
+        </div>
+    </div> 
+    </mat-tab>
+    <mat-tab label="Paquetes">
+      <div style="margin-top: 50px;" class="row">
+        <div *ngFor="let pac1 of paquetesArray" class="col-md-4">
+          <span class="fontm1">{{pac1.name}}</span>
+          <br>
+          <a  (click)="service.setTipo('Paquete',pac1.id)">Detalle</a>
+          <br>
+          <img src={{pac1.imageUrl}} width="405px" height="335px"/>
+          <br>
+          <span class="fontm2"><strong>Precio:</strong>L. {{pac1.price}}</span>
+          <br>
+          <br>
+          <span class="fontm2"><strong>Descripcion</strong>{{pac1.description}}</span>
+          <br>
+         <botonescomprar [product]="pac1"></botonescomprar>
+         <button *ngIf="authService.isAdmin()" mat-button class="buttonbck2" (click)="menu.setEditar('Paquete',pac1.id)"><mat-icon [ngStyle]="{'color':'white'}">create</mat-icon></button>
+         <button (click)="deleteProduct(pac1.id,'https://localhost:44320/api/Paquetes')" *ngIf="authService.isAdmin()" mat-button class="buttonbck3" ><mat-icon [ngStyle]="{'color':'white'}">delete</mat-icon></button>
+         
+        </div>
+    </div> 
+      </mat-tab>
+  </mat-tab-group>
+
+ 

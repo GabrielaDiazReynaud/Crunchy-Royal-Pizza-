@@ -1,0 +1,28 @@
+<img src="/assets/images/Pago.png" width="100%" >
+<div style="margin-top: 50px;" class="container">
+<div class="col-md-10">
+    <form #newClaseForm="ngForm" (ngSubmit)="saveInfo(newClaseForm.value)">
+        <div class="form-group">
+            <label for="nombre">Nombre completo:</label>
+            <input (ngModel)="nombre" name="nombre"  id="nombre" type="text" class="form-control" placeholder="Nombre..." required />
+        </div>
+        <div class="form-group">
+            <label for="direccion">Direccion:</label>
+           
+            <input (ngModel)="direccion" name="direccion"  id="direccion" type="text" class="form-control" placeholder="Direccion..." required />
+        </div>
+        
+        <div class="form-group">
+            <label for="telefono">Telefono:</label>
+            <em *ngIf="newClaseForm.controls.horario?.invalid && newClaseForm.controls.horario?.touched">Campo Requerido</em>
+            <input (ngModel)="telefono" name="telefono"  id="telefono" type="text" class="form-control" placeholder="horario..." required />
+        </div>
+       <div style="float:right;">
+        <button mat-button  type="submit" [disabled]="newClaseForm.invalid" class="buttonbck" ><mat-icon [ngStyle]="{'color':'black'}">payment</mat-icon> PAGAR</button>
+        <span>&nbsp;&nbsp;&nbsp;</span>
+        <button (click)="goBack()" mat-button  class="buttonbck2" ><mat-icon [ngStyle]="{'color':'black'}"> keyboard_return</mat-icon></button>
+       </div>
+       <h1>Total a pagar L.{{getTotal()}}</h1>
+    </form>
+</div>
+</div>

@@ -1,0 +1,56 @@
+
+<div class="container">
+    <div class="row">
+        
+        <div class="col-md-11">
+            <h1>{{clase?.name}} </h1>
+        </div>
+        <img [src]="clase?.imageUrl"  width="50%"/>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h2><strong>Precio:</strong> {{clase?.price}}</h2>
+        </div>
+        <div class="col-md-6">
+            <h2><strong>Descripcion:</strong> {{clase?.description}}</h2>
+        </div>
+    </div>
+    <hr>
+    <br>
+    <br>
+    <br>
+    <h1>Reseñas</h1>
+    <div class="scroll">
+
+        
+        <div *ngFor="let pizza1 of lolazo">
+
+            <div *ngIf="pizza1?.name == clase?.name" style ="background-color: white; margin-bottom: 20px;">
+                <span ><strong>{{pizza1.userName}} </strong></span>
+                <span>{{pizza1.comment}}</span>
+                <br>
+                <hr>
+            </div>
+        </div>
+
+
+
+
+</div>
+    <br>
+
+    <form #newClaseForm="ngForm" (ngSubmit)="obtenerComentario(newClaseForm.value)">
+    <div class="form-group">
+        <label for="comment">Comentario:</label>
+        <input (ngModel)="comment" name="comment"  id="comment" type="text" class="form-control" placeholder="comment..." required />
+    </div>
+
+     <button type="submit"  class="btn btn-primary" style="border-radius: 19px;    width: 273px;
+           background-color: #4b5086;" [disabled]="newClaseForm.invalid">Send</button>
+
+    </form>
+
+    
+    
+
+</div>

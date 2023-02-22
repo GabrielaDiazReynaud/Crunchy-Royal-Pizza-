@@ -1,0 +1,29 @@
+<img src="/assets/images/Cart.png" width="100%" >
+<div *ngFor="let item1 of list ">
+<div class="rows2 row">
+
+ <h1>{{item1.productname}}</h1>
+ <div class="col-md-3">
+ <img src={{item1.imageUrl}} width="405px" height="335px"/>
+</div>
+<div class="col-md-4">
+<h3><strong>Precio: </strong>L. {{item1.price}}</h3>
+<h3><strong>Descripcion: </strong>{{item1.description}}</h3>
+
+</div>
+<div class="col-md-4">
+    <button (click)="takeone(item1)" mat-button class="buttonbck2" ><mat-icon>remove</mat-icon></button>
+    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <span>{{item1.cantidad}}</span>
+    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+     <button (click)="addone(item1)" mat-button class="buttonbck2" ><mat-icon>add</mat-icon></button>
+     <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+     <button (click)="quitardelCarrito(item1)" mat-button class="buttonbck3" ><mat-icon [ngStyle]="{'color':'white'}">delete</mat-icon></button>
+</div>
+
+</div>
+<hr>
+</div>
+<h1>Total a pagar L.{{getTotal()}}</h1>
+<button  (click)="irPago()"mat-button class="buttonbck" ><mat-icon [ngStyle]="{'color':'black'}">payment</mat-icon>   PROCEDER A PAGAR</button>
+<hr>

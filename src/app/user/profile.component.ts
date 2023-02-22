@@ -1,0 +1,102 @@
+import { Component } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
+import { AuthService } from "./auth.service";
+
+@Component({
+    templateUrl: './profile.component.html',
+    styles: [`
+    em {
+        float: right;
+        color: #e05c65;
+        padding-left: 10px;
+      }
+      .error input,
+      .error select,
+      .error textarea {
+        background-color: #e3c3c5;
+      }
+      .error ::-webkit-input-placeholder {
+        color: #999;
+      }
+      .error ::-moz-placeholder {
+        color: #999;
+      }
+      .error :-moz-placeholder {
+        color: #999;
+      }
+      .error :ms-input-placeholder {
+        color: #999;
+      }
+
+      .col-md-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+        margin-left: 324px;
+    }
+
+    .form-group {
+        margin-bottom: 3rem;
+    }
+
+    .btn:not(:disabled):not(.disabled) {
+        cursor: pointer;
+        border-radius: 19px;
+        width: 273px;
+        margin-left: 144px;
+        background-color: ##575C90;
+    }
+    `]
+
+})
+export class ProfileComponent {
+
+    nombre: FormControl
+    email: FormControl
+    rol: FormControl
+    password: FormControl
+    registerForm: FormGroup
+
+    constructor(public authService: AuthService, private router: Router) {
+        this.nombre = new FormControl(authService.currentUser?.nombre, [
+            Validators.required,
+            Validators.pattern("[a-zA-Z]*"),
+            Validators.maxLength(10)
+        ])
+        this.email = new FormControl(authService.currentUser?.email, [
+            Validators.required,
+            Validators.pattern("[a-zA-Z]*"),
+            Validators.maxLength(10)
+        ])
+        this.rol = new FormControl(authService.currentUser?.rol, [
+            Validators.required,
+            Validators.pattern("[a-zA-Z]*"),
+            Validators.maxLength(10)
+        ])
+        this.password = new FormControl(authService.currentUser?.password, [
+            Validators.required,
+            Validators.pattern("[a-zA-Z]*"),
+            Validators.maxLength(10)
+        ])
+
+
+        this.registerForm = new FormGroup({
+            nombre: this.nombre,
+            email: this.email,
+            rol: this.rol,
+            password: this.password
+        })
+    }
+
+
+    fnCreateUser(data) {
+        console.log(data);
+        console.log(this.registerForm);
+       
+        this.authService.updateUser(data).subscribe(() => {
+            
+            this.router.navigateByUrl('CrunchyRoyalPizza/Home');
+        })
+
+    }
+}

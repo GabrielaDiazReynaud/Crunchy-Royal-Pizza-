@@ -1,0 +1,54 @@
+
+<mat-drawer-container class="example-container" >
+  <mat-drawer #drawer class="example-sidenav" mode="side" style ="background-color: #EDEBCE;">
+    <img src="/assets/images/CRP.png" width="150" height="150"/>
+    <br>
+    <br>
+
+    <a class="nav-link" *ngIf="!authService.IsloggedIn() && !isLogged" class="fontl underline"   href="user/login" style="color: black;">Login</a>
+
+    
+
+
+    <br>
+    <br>
+   <span class="fontl underline" (click)="gettabmenu(0)">Menu</span> 
+   <br>
+   <br>
+   <span class="fontl underline"[routerLink]="['CrunchyRoyalPizza/Cart']">Cart</span> 
+   <br>
+   <br>
+   <a class="fontl underline" *ngIf="authService.IsloggedIn()" style="color: black;" (click)="signOut()">Sign out</a>
+
+   <a class="fontl underline"  *ngIf="isLogged" style="color: black;" (click)="logout()">Sign out</a>
+   <br><br><br> <br> <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br> <br><br><br> <br> <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+   
+  
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <mat-toolbar class="bc">
+      <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+
+      <a style="color: aliceblue;" [routerLink]="['CrunchyRoyalPizza/Home']">Home</a>
+      <a *ngIf="authService.isAdmin()" class="nav-link" style="color: aliceblue;"[routerLink]="['CrunchyRoyalPizza/Agregar']">Agregar producto</a>
+      <a *ngIf="authService.isAdmin()" class="nav-link" style="color: aliceblue;"[routerLink]="['user/register']">Agregar usuario</a>
+      
+      <span class="toolbar-spacer"></span>
+         <button mat-icon-button [routerLink]="['CrunchyRoyalPizza/Cart']">
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+      <a *ngIf="authService.IsloggedIn()" [routerLink]="['user/profile']" class="nav-link" style="color: aliceblue;" >Bienvenido {{authService.getCurrentUser().nombre }}</a>
+      <a *ngIf="isLogged" class="nav-link" style="color: aliceblue;" >Bienvenido {{userLogged.name }}</a>
+
+      <a *ngIf="!authService.IsloggedIn() && !isLogged" [routerLink]="['user/login']" class="nav-link"style="color: aliceblue;">My Account</a>
+    
+
+     
+    </mat-toolbar>
+  </div>
+
+</mat-drawer-container>
